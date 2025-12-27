@@ -1,0 +1,110 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build resume with html css and java</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="resume.css">
+</head>
+<body>
+
+<div class="head">
+  <h1 style= "font-family: 'Tangerine', serif;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;">WE MAKE YOUR RESUME IN SHORTER TIME </h1>
+  <h3>Modern • Attractive • Professional</h3>
+
+  <div class="app">
+
+    <!-- FORM -->
+    <div class="form">
+      <h2>Your Details</h2>
+      <input id="name" placeholder=" Enter Full Name">
+      <input id="email" placeholder="Enter Email">
+      <input id="phone" placeholder="Enter Phone no:">
+      <input id="address" placeholder="Enter Location">
+      <textarea id="summary" placeholder=" Add Summary"></textarea>
+      
+      <textarea id="skills" placeholder=" Add Skills"></textarea>
+      <textarea id="education" placeholder="Add Education"></textarea>
+
+
+      <textarea id="experience" placeholder=" Add Experience"></textarea>
+      <button onclick="generate()">Generate Resume</button>
+    </div>
+
+
+    <!-- shower resume  -->
+    <div class="show">
+      <div class="resume">
+        <h1 id="rName">Your Name</h1>
+        <div class="contact" id="rContact">Email | Phone | Location</div>
+
+        <div class="section-title">Summary</div>
+        <p id="rSummary"></p>
+
+        <div class="section-title">Skills</div>
+        <ul id="rSkills"></ul>
+
+        <div class="section-title">Education</div>
+        <p id="rEducation"></p>
+
+        <div class="section-title">Experience</div>
+        <p id="rExperience"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- java script start -->
+ <script> 
+function generate(){
+  let name=nameInput();
+  let email=emailInput();
+  let phone=phoneInput();
+  let address=addressInput();
+  let summary=summaryInput();
+  let skills=skillsInput();
+  let education=educationInput();
+  let experience=experienceInput();
+
+  if(!name||!email||!phone||!address||!summary||!skills||!education||!experience){
+    alert("Please fill all fields");
+    return;
+  }
+
+  document.getElementById("rName").innerText=name;
+  document.getElementById("rContact").innerText=email+" | "+phone+" | "+address;
+  document.getElementById("rSummary").innerText=summary;
+  document.getElementById("rEducation").innerText=education;
+  document.getElementById("rExperience").innerText=experience;
+
+  let list="";
+  let arr=skills.split(",");
+  for(let i=0;i<arr.length;i++){
+    list+="<li>"+arr[i].trim()+"</li>";
+  }
+  document.getElementById("rSkills").innerHTML=list;
+}
+
+function nameInput(){return document.getElementById("name").value;}
+function emailInput(){return document.getElementById("email").value;}
+function phoneInput(){return document.getElementById("phone").value;}
+function addressInput(){return document.getElementById("address").value;}
+function summaryInput(){return document.getElementById("summary").value;}
+function skillsInput(){return document.getElementById("skills").value;}
+function educationInput(){return document.getElementById("education").value;}
+function experienceInput(){return document.getElementById("experience").value;}
+ </script>
+
+</body>
+</html>
+ 
